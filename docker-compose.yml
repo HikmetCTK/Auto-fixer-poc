@@ -1,0 +1,11 @@
+services:
+  api:
+    build: .
+    profiles: ["sandbox"]
+    # This service is only used by DockerTestTool to run
+    # `docker compose run --rm api`.
+    volumes:
+      - .:/app
+      - /app/.venv
+    env_file: .env
+

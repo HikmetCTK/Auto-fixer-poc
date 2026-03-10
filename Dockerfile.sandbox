@@ -1,0 +1,10 @@
+# Sandbox image for safe code execution
+# Inherits all project dependencies from the production image
+FROM bugdetective:latest
+
+RUN pip install pytest pytest-asyncio
+
+# Run as non-root
+USER nobody
+
+ENTRYPOINT ["pytest"]

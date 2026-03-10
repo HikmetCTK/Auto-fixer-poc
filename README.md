@@ -7,8 +7,12 @@ The goal of this project is to explore the end-to-end workflow of triggering an 
 # Workflow🔀
 <img width="1006" height="225" alt="image" src="https://github.com/user-attachments/assets/2fc7df39-5313-4da2-bf2f-5653e9333cb8" />
 
----
+# Demo Video
 
+
+https://github.com/user-attachments/assets/e4908676-0da0-4f1d-8d16-9459623f06e2
+
+---
 ## 💡 Concept & Features
 
 This PoC showcases the following experimental workflow:

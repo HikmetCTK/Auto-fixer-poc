@@ -84,5 +84,5 @@ Open `http://localhost:3000` in your browser.
 
 ## ⚠️ Limitations & Notes
 
-- **Proof of Concept:** This project is for experimental and educational purposes. It is **not** intended for production use.
+- **Proof of Concept:** This project is for experimental and educational purposes. With right context and good orchestration process is possible to fix errors .
 - **Accuracy:** The system's ability to fix bugs relies heavily on the underlying LLM's capabilities and may produce incorrect or hallucinated fixes.(Local models were not good to produce structured response and tool calling)

@@ -4,6 +4,9 @@ Auto-fixer is an experimental Proof of Concept (PoC) demonstrating how a multi-a
 
 The goal of this project is to explore the end-to-end workflow of triggering an AI system with an error trace and letting it attempt to find the root cause, write a patch, test it in an isolated sandbox, and finally branch the code for human review.
 
+# Workflow🔀
+<img width="1006" height="225" alt="image" src="https://github.com/user-attachments/assets/2fc7df39-5313-4da2-bf2f-5653e9333cb8" />
+
 ---
 
 ## 💡 Concept & Features

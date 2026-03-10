@@ -1,7 +1,7 @@
 """FastAPI application — HTTP gateway only.
 
 Handles incoming webhooks / API calls and dispatches work to the
-orchestrator (and later Temporal).
+orchestrator and agents. Also manages WebSocket connections for real-time event streaming.
 """
 
 from __future__ import annotations
@@ -68,10 +68,6 @@ class AnalyzeRequest(BaseModel):
     extra_context: str = Field(default="", description="Any extra context to help the agents.")
     session_id_override: str = Field(default="", description="Optional: client-provided session UUID for WebSocket targeting.")
     auto_apply_fix: bool = Field(default=False, description="If true, automatically applies the suggested fix and runs Docker tests.")
-    test_command: str = Field(
-        default="",
-        description="Optional Docker sandbox test command, e.g. 'uv run pytest tests/e2e/test_pipeline.py'.",
-    )
 
 
 class AnalyzeResponse(BaseModel):
@@ -117,12 +113,7 @@ async def analyze_error(request: AnalyzeRequest):
 
     try:
         orchestrator = Orchestrator(project_path=request.project_path or os.getcwd())
-        result = await orchestrator.run(
-            user_input,
-            context,
-            auto_apply_fix=request.auto_apply_fix,
-            test_command=request.test_command,
-        )
+        result = await orchestrator.run(user_input, context, auto_apply_fix=request.auto_apply_fix)
     except Exception as exc:
         logger.exception("Pipeline failed for session=%s", session_id)
         raise HTTPException(status_code=500, detail=str(exc)) from exc

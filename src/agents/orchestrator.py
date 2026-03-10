@@ -36,10 +36,6 @@ class WorkflowResult:
 
 class Orchestrator:
     """Sequential orchestrator — runs each agent in order.
-
-    Phase 3 migration path:
-      Each ``_step_*`` method becomes a Temporal Activity.
-      ``run()`` becomes a Temporal Workflow.
     """
 
     def __init__(self, project_path: str | None = None, **kwargs) -> None:
@@ -58,13 +54,7 @@ class Orchestrator:
         self.fix_suggester = FixSuggesterAgent()
         self.reporter = ReporterAgent()
 
-    async def run(
-        self,
-        error_input: str,
-        context: AgentContext | None = None,
-        auto_apply_fix: bool = False,
-        test_command: str = "",
-    ) -> WorkflowResult:
+    async def run(self, error_input: str, context: AgentContext | None = None, auto_apply_fix: bool = False) -> WorkflowResult:
         """Execute the full bug-fix pipeline."""
         context = context or AgentContext()
         logger.info("Starting bug-fix workflow for session=%s", context.session_id)
@@ -100,8 +90,7 @@ class Orchestrator:
             import json as _json
 
             test_tool = DockerTestTool()
-            test_kwargs = {"test_command": test_command} if test_command else {}
-            test_res = await test_tool.execute(**test_kwargs)
+            test_res = await test_tool.execute()
 
             git_pushed = False
             details_str = f"Tests run result:\n{test_res}"

@@ -36,16 +36,6 @@ class Settings(BaseSettings):
     default_model: str = ""
     fallback_model: str = ""
 
-    # ── Redis ───────────────────────────────────────────
-    redis_url: str = "redis://localhost:6379/0"
-
-    # ── PostgreSQL ──────────────────────────────────────
-    database_url: str = "postgresql+asyncpg://app:changeme@localhost:5432/bugdetective"
-
-    # ── Temporal ────────────────────────────────────────
-    temporal_host: str = "localhost:7233"
-    temporal_namespace: str = "default"
-    temporal_task_queue: str = "bug-detective-queue"
 
     # ── Langfuse (Phase 2) ──────────────────────────────
     langfuse_public_key: str = ""

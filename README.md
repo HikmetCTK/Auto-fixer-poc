@@ -1,6 +1,6 @@
-# Bug Detective: Autonomous Multi-Agent Bug Fixer (Proof of Concept)
+# Auto-fixer: Autonomous Multi-Agent Bug Fixer (Proof of Concept)
 
-Bug Detective is an experimental Proof of Concept (PoC) demonstrating how a multi-agent AI system can autonomously detect, analyze, fix, and verify code bugs. 
+Auto-fixer is an experimental Proof of Concept (PoC) demonstrating how a multi-agent AI system can autonomously detect, analyze, fix, and verify code bugs. 
 
 The goal of this project is to explore the end-to-end workflow of triggering an AI system with an error trace and letting it attempt to find the root cause, write a patch, test it in an isolated sandbox, and finally branch the code for human review.
 
